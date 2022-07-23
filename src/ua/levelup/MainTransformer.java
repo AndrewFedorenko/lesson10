@@ -3,7 +3,7 @@ package ua.levelup;
 public class MainTransformer {
     static char[] from = {'a', 'b', 't', 'r', 'z'};
     static char[] to = {'c', 'd', 'q', 'v', 'x'};
-    static int iter = 5;
+    static int iter = from.length;
 
     public static void main(String[] args) {
         try(TransformerInputStream transf = doTransform(iter))
