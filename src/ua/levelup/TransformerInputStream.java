@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class TransformerInputStream extends FilterInputStream {
 
-    private char from;
-    private char to;
+    char from;
+    char to;
 
-    protected TransformerInputStream(InputStream in, char from, char to) {
+    TransformerInputStream(InputStream in, char from, char to) {
         super(in);
         this.from = from;
         this.to = to;
@@ -26,19 +26,4 @@ public class TransformerInputStream extends FilterInputStream {
         return chr == -1 ? chr : exchChar(chr);
     }
 
-    public static void main(String[] args) {
-        try (TransformerInputStream tsr =
-                     new TransformerInputStream(
-                     new TransformerInputStream(System.in, 'a', 't'), 't', 'q'))
-        {
-            int read;
-            while ((read = tsr.read()) != -1){
-                System.out.print((char) read);
-            }
-        }
-        catch (Exception error){
-            System.err.println(error.getMessage());
-        }
-
-    }
 }
